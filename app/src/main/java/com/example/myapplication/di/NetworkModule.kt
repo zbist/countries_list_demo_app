@@ -11,6 +11,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object NetworkModule {
+    private const val BASE_URL = "https://gist.githubusercontent.com/"
+
     val networkModule = module {
 
         single<OkHttpClient> {
@@ -33,7 +35,7 @@ object NetworkModule {
 
         single<Retrofit> {
             Retrofit.Builder()
-                .baseUrl("https://gist.githubusercontent.com/")
+                .baseUrl(BASE_URL)
                 .client(get())
                 .addConverterFactory(GsonConverterFactory.create(Gson()))
                 .build()
